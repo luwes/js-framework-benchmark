@@ -18,4 +18,4 @@ jobs:
 
           npm install
           npm start &
-          npm run build -- --check
+          npm run build -- --check --framework vanillajs-keyed
