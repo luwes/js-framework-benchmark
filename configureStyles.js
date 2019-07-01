@@ -2,32 +2,30 @@ var _ = require('lodash');
 var exec = require('child_process').execSync;
 var fs = require('fs-extra');
 var path = require('path');
-var yargs = require ('yargs');
+var yargs = require('yargs');
 
 let args = yargs(process.argv)
-.usage("$0 [--bootstrap --minimal]")
-.help('help')
-.boolean('bootstrap')
-.boolean('minimal')
-.argv;
+  .usage('$0 [--bootstrap --minimal]')
+  .help('help')
+  .boolean('bootstrap')
+  .boolean('minimal').argv;
 
-if (args.bootstrap ^ args.minimal == false) {
-	console.log("ERROR: You must either choose bootstrap or minimal");
+if (args.bootstrap ^ (args.minimal == false)) {
+  console.log('ERROR: You must either choose bootstrap or minimal');
 } else {
-	if (args.bootstrap) {
-		fs.copySync("css/useOriginalBootstrap.css","css/currentStyle.css");
-		let bootstrap = fs.readFileSync("css/bootstrap/dist/css/bootstrap.min.css")
-		let mainCss = fs.readFileSync("css/main.css")
-		let str = `<dom-module id="shared-styles"><template><style>${bootstrap}\n${mainCss}</style></template></dom-module>`;
-		fs.writeFileSync("polymer-v2.0.0-non-keyed/src/shared-styles.html", str);
-	} else {
-		fs.copySync("css/useMinimalCss.css","css/currentStyle.css");
-		let minCss = fs.readFileSync("css/useMinimalCss.css")
-		let str = `<dom-module id="shared-styles"><template><style>${minCss}</style></template></dom-module>`;
-		fs.writeFileSync("polymer-v2.0.0-non-keyed/src/shared-styles.html", str);
-	}
+  if (args.bootstrap) {
+    fs.copySync('css/useOriginalBootstrap.css', 'css/currentStyle.css');
+    let bootstrap = fs.readFileSync('css/bootstrap/dist/css/bootstrap.min.css');
+    let mainCss = fs.readFileSync('css/main.css');
+    let str = `<dom-module id="shared-styles"><template><style>${bootstrap}\n${mainCss}</style></template></dom-module>`;
+    fs.writeFileSync('polymer-v2.0.0-non-keyed/src/shared-styles.html', str);
+  } else {
+    fs.copySync('css/useMinimalCss.css', 'css/currentStyle.css');
+    let minCss = fs.readFileSync('css/useMinimalCss.css');
+    let str = `<dom-module id="shared-styles"><template><style>${minCss}</style></template></dom-module>`;
+    fs.writeFileSync('polymer-v2.0.0-non-keyed/src/shared-styles.html', str);
+  }
 }
-
 
 /*
 if (fs.existsSync("dist")) fs.removeSync("dist");
