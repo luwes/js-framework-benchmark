@@ -2,7 +2,7 @@ Because of the heavy amount of Rust dependencies, this example is pre-compiled, 
 
 However, if you do want to compile it, you will need the following:
 
-* [Rust](https://www.rust-lang.org/tools/install)
+- [Rust](https://www.rust-lang.org/tools/install)
 
 After installing that, run these commands:
 
