@@ -26,8 +26,8 @@ addons:
 jobs:
   include:
     - script:
-    		- yarn start & node build.js --check --count 1 --framework sinuous vanillajs-keyed
-    		- (cd webdriver-ts && yarn results)
+      - yarn start & node build.js --check --count 1 --framework sinuous vanillajs-keyed
+      - (cd webdriver-ts && yarn results)
       name: "Benchmark"
       deploy:
         provider: pages
