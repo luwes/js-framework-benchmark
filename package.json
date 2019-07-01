@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Simple Benchmark for Javascript client side rendering",
   "scripts": {
+    "lint": "eslint '*.{js,ts}' '*/src/**/*.{js,ts}'",
+    "format": "prettier --write '*.{js,ts}' '*/{src,test}/**/*.{js,ts}' '**/*.md'",
     "clean": "node cleanup.js",
     "build": "node build.js",
     "build-prod": "node build.js",
